@@ -67,6 +67,10 @@ gamma = 1; % experimental gamma factor
 %   src/get_inference_param.m
 % -------------------------------------------------------------------------
 
+% add subfolders to MATLAB path
+codePath = fileparts(mfilename('fullpath'));
+addpath(genpath(codePath));
+
 % ask user for histogram text file
 [fle,src] = uigetfile('*.mat','Select an histogram file.',pwd);
 if ~sum(src)
