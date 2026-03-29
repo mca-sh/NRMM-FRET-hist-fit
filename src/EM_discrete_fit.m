@@ -50,7 +50,7 @@ for K = 1:prm.Kmax
         % print ML estimate
         if mod(i,10)==0
             nb0 = eraseandfprintf(sprintf(['Optimum for %i components ',...
-                '(init %i/%i):\n'],K,i,prm.ninit),nb);
+                '(random init %i/%i):\n'],K,i,prm.ninit),nb);
             fmt = repmat('%.3f ',1,K);
             nb1 = fprintf(['\t  E=',fmt,'\n\tflx=',fmt,'\n\t  w=',fmt,'\n'],...
                 E{K},flx{K},w{K});

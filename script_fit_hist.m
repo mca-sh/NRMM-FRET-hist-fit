@@ -10,12 +10,13 @@
 % Adjust user parameters in the section "USER PARAMETERS" below prior
 % running this script.
 %
-% Because the noise model possesses no analytical form, model's 
-% probabilitities as pre-calculated using data simulation for fixed grids 
-% of parameters (peak means and structure flexibilities). This lookup table 
-% is calculated once for the input noise model parameters (progress shown 
-% in prompt with "grid index xxxx / xxxx done") and saved to the analysis 
-% mat file. If the noise parameters change, the table is recalculated.
+% Because the noise model possesses no analytical form, a library of 
+% histogram peaks are calculated in a preliminary step using data 
+% simulation for fixed grids of parameters (peak means and structure 
+% flexibilities). This lookup table is calculated once for the input noise 
+% model parameters (progress shown in prompt with "grid index xxxx / xxxx 
+% done") and saved to the analysis mat file. If the noise parameters change, 
+% the table is recalculated.
 %
 % For speed, table and DPMM calculations uses the parallel computing tool.
 % It is highly recommended to install and use it.

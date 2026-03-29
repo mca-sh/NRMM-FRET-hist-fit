@@ -63,7 +63,7 @@ switch recordingtype
             const.I0(const.I0<thresh_I0_min) = [];
             num_I0 = length(const.I0);
         end
-        const.bgD = 0.04*I0_mean;
+        const.bgD = 0.04*I0_mean; % estimation of 4% background
         const.bgA = 0.04*I0_mean;
 
     case 'none'
