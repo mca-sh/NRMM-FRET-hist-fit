@@ -23,3 +23,6 @@ octave-workspace
 
 # Simulink autosave extension
 *.autosave
+
+# test data folder
+test-data/
