@@ -70,8 +70,8 @@ parfor m = 1:M % to be replaced by for m = 1:M if plotit==true
         E = 1./(1+(r/const.R0).^6);
 
         % simulate noisy I_A and I_D with background and correction
-        n_pc_A = repmat(E*const.I0,const.npix,1);
-        n_pc_D = repmat((1-E)*const.I0/const.gamma,const.npix,1);
+        n_pc_A = repmat(E.*const.I0,const.npix,1);
+        n_pc_D = repmat((1-E).*const.I0/const.gamma,const.npix,1);
         
         n_ic_A = sum(noisedistrib((n_pc_A+const.bgA),const),1)-bgA_tr;
         n_ic_D = sum(noisedistrib((n_pc_D+const.bgD),const),1)-bgD_tr;

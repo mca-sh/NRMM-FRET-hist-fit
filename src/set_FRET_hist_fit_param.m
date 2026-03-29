@@ -50,12 +50,21 @@ const.bgD = 0;   % background light in donnor channel (PC/pixel)
 const.I0 = 100;  % total donnor emission (PC/pixel)
 switch recordingtype
     case 'SPAD'
-        % confocal + APD noise parameters (approx: image counts from EMCCD 
-        % recordings)
+        % confocal + APD noise parameters (photon counts from file
+        % 20240405_eD135e_L43E_100mMMg_pre_4_APBS_2CnoMFD.bur)
         const.noisetype = 'P';
-        const.I0 = ic2pc(10000/const.npix + const.b,const); % exp mean Itot=10000 ic
-        const.bgD = ic2pc(2500/const.npix,const); % exp bg=2500 ic
-        const.bgA = ic2pc(1340/const.npix,const);  % exp bg=1340 ic
+        I0_mean = 71.74; % log(2)*median(GG+GR) using 50PC min threshold
+        thresh_I0_min = 50;
+        num_I0 = 0;
+        const.I0 = [];
+        while num_I0<opt.Nsim
+            const.I0 = cat(2,const.I0,...
+                exprnd(I0_mean,[1,opt.Nsim-num_I0]));
+            const.I0(const.I0<thresh_I0_min) = [];
+            num_I0 = length(const.I0);
+        end
+        const.bgD = 0.04*I0_mean;
+        const.bgA = 0.04*I0_mean;
 
     case 'none'
         % for discrete FRET histograms
